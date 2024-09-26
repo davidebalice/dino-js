@@ -1,0 +1,228 @@
+@font-face {
+  font-family: Minecraft;
+  src: url("./assets/Minecraft.ttf");
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.start-container {
+  width: 100%;
+  height: 650px;
+  position: relative;
+  overflow: hidden;
+  flex-direction: column;
+  background-image: url("./assets/sky.png?d=1");
+  background-size: cover;
+  background-position: 0 bottom;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-container {
+  width: 100%;
+  height: 650px;
+  position: relative;
+  overflow: hidden;
+  background-image: url("./assets/sky.png?d=1");
+  background-size: cover;
+  animation: bg-move 30s linear infinite;
+  background-position: 0 bottom;
+}
+
+@keyframes bg-move {
+  0% {
+    background-position: 0 bottom;
+  }
+  100% {
+    background-position: -5090px bottom;
+  }
+}
+
+.player {
+  width: 180px;
+  height: 140px;
+  position: absolute;
+  bottom: 0;
+  left: 17%;
+  background-image: url("./assets/dino.gif?d=1");
+  background-size: cover;
+  background-position: bottom;
+  margin-bottom: -15px;
+}
+
+.player.jump {
+  animation: jump 1.5s infinite;
+  background-image: url("./assets/dino.png?d=1");
+}
+
+.player.start {
+  background-image: url("./assets/dino.png?d=1");
+}
+
+.start-player {
+  background-image: url("./assets/dino.png?d=1");
+  width: 180px;
+  height: 140px;
+  background-size: cover;
+  background-position: bottom;
+}
+
+@keyframes jump {
+  0% {
+    bottom: 0;
+  }
+
+  25% {
+    bottom: 250px;
+  }
+  40% {
+    bottom: 250px;
+  }
+
+  100% {
+    bottom: 0;
+  }
+}
+
+.obstacle {
+  width: 80px;
+  height: 140px;
+  position: absolute;
+  bottom: 0;
+  left: 80%;
+  animation: move 1.5s linear infinite;
+  background-image: url("./assets/cactus1.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.obstacle-xs {
+  width: 130px;
+  height: 90px;
+  background-image: url("./assets/cactus3.png");
+}
+.obstacle-s {
+  width: 60px;
+  height: 80px;
+}
+.obstacle-m {
+  width: 90px;
+  height: 90px;
+}
+.obstacle-l {
+  width: 190px;
+  height: 190px;
+  background-position: bottom;
+  background-image: url("./assets/cactus2.png");
+}
+
+@keyframes move {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: -100px;
+  }
+}
+
+.score-card {
+  color: #fff;
+  font-family: Minecraft;
+  font-size: 50px;
+  margin: 20px;
+}
+
+.score-card span {
+  margin-right: 20px;
+}
+
+.restart-game {
+  visibility: hidden;
+  font-family: Minecraft;
+  width: 300px;
+  height: 70px;
+  font-weight: bold;
+  margin: 0 auto;
+  margin-top: 180px;
+  background: #858e02;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  z-index: 2;
+  padding-top: 10px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.restart-game:hover {
+  background: #6e7200;
+}
+
+.restart-game.show {
+  visibility: visible;
+}
+
+.restart-game .content {
+  display: flex;
+}
+
+.restart-game .btn-reset-game {
+  border: none;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background-image: url("./assets/restart.png");
+  background-size: contain;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.restart-game .text {
+  align-self: end;
+  text-decoration: none !important;
+}
+
+.stop.game-container,
+.stop .obstacle {
+  animation-play-state: paused;
+}
+
+.stop .player {
+  background-image: url("./assets/dino.png?d=1");
+}
+
+.start-game {
+  font-family: Minecraft;
+  width: 300px;
+  height: 70px;
+  background: #858e02;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  z-index: 2;
+  font-weight: bold;
+  padding-top: 10px;
+  color: #fff;
+}
+
+.start-game:hover {
+  background: #6e7200;
+}
+
+.start-game.show {
+  visibility: visible;
+}
+
+.start-game .content {
+  display: flex;
+}
