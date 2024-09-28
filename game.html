@@ -1,33 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dino JS</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="toggle-music" class="sound-button">
+      <img src="./assets/mute.png" id="sound-icon" />
+    </div>
+    <div class="github-icon">
+      <a href="https://github.com/davidebalice/dino-js" target="_blank">
+        <img src="./assets/github.png" />
+      </a>
+    </div>
+    <div class="game-container" onclick="jump()">
+      <div class="score-card">
+        <span>Hi-Score</span>
+        <span class="high-score"></span>
+        <span>Score</span>
+        <span class="score"></span>
+      </div>
+      <div class="player"></div>
 
-    <link rel="stylesheet" href="style.css">
-</head>
-<body onclick="jump()">
-    
-    <div class="game-container">
-        <div class="score-card">
-            <span>Hi-Score</span>
-            <span class="high-score"></span>
-            <span>Score</span>
-            <span class="score"></span>
+      <div class="obstacle"></div>
+
+      <div class="restart-game" onclick="restart()">
+        <div class="content">
+          <span class="text">RESTART</span>
         </div>
-        <div class="player"></div>
-
-        <div class="obstacle"></div>
-
-        <div class="restart-game" onclick="restart()">
-            <div class="content">
-                <span class="text">RESTART</span>
-            </div>
-        </div>
+      </div>
     </div>
 
     <script src="./app.js"></script>
-</body>
+  </body>
 </html>

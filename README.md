@@ -1,1 +1,2 @@
-# dino game
+# dino game clone
+developed in javascript
