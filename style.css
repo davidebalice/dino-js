@@ -304,4 +304,12 @@ a {
     font-size: 26px;
     padding-top: 10px;
   }
+  .github-icon {
+    width: 50px;
+    right:80px;
+  }
+  .sound-button {
+    width: 50px;
+  }
 }
+
