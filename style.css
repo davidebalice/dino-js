@@ -8,6 +8,7 @@ body {
   margin: 0;
   user-select: none;
   font-family: Minecraft;
+  letter-spacing: 3px;
 }
 
 a {
@@ -50,8 +51,8 @@ a {
 .github-icon {
   position: absolute;
   width: 80px;
-  right:120px;
-  top:20px;
+  right: 120px;
+  top: 20px;
   z-index: 100;
 }
 
@@ -306,10 +307,9 @@ a {
   }
   .github-icon {
     width: 50px;
-    right:80px;
+    right: 80px;
   }
   .sound-button {
     width: 50px;
   }
 }
-
