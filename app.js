@@ -15,6 +15,7 @@ let musicPlaying = true;
 const toggleMusicButton = document.getElementById("toggle-music");
 const soundIcon = document.getElementById("sound-icon");
 
+// Aggiungi un listener per il pulsante di toggle della musica
 toggleMusicButton.addEventListener("click", () => {
   if (musicPlaying) {
     music.pause();
@@ -28,6 +29,7 @@ toggleMusicButton.addEventListener("click", () => {
 
 const OBSTACLE_SIZES = ["xs", "s", "m", "l"];
 
+// Aggiungi un listener per il salto
 function addJumpListener() {
   document.addEventListener("keydown", (event) => {
     if (event.key === " " || event.key === "ArrowUp") {
@@ -49,10 +51,11 @@ function jump() {
   setTimeout(() => {
     playerElement.classList.remove("jump");
     jumping = false;
-  }, 1200);
+  }, 1200); // Durata del salto
 }
 
 let collisionInterval;
+// Monitora le collisioni
 function monitorCollision() {
   collisionInterval = setInterval(() => {
     if (isCollision()) {
@@ -63,6 +66,7 @@ function monitorCollision() {
 }
 
 const LEFT_BUFFER = 50;
+// Controlla se c'è una collisione
 function isCollision() {
   const playerClientRect = playerElement.getBoundingClientRect();
   const playerL = playerClientRect.left;
@@ -74,6 +78,7 @@ function isCollision() {
   const obstacleR = obstacleClientRect.right;
   const obstacleT = obstacleClientRect.top;
 
+  //determina la collisione in base alla posizione
   const xCollision = obstacleR - LEFT_BUFFER > playerL && obstacleL < playerR;
   const yCollision = playerB > obstacleT;
 
@@ -81,11 +86,13 @@ function isCollision() {
 }
 
 let score = 0;
+// Imposta il punteggio
 function setScore(newScore) {
   scoreElement.innerHTML = score = newScore;
 }
 
 let scoreInterval;
+// Conta il punteggio
 function countScore() {
   scoreInterval = setInterval(() => {
     setScore(score + 1);
@@ -93,30 +100,40 @@ function countScore() {
 }
 
 let highscore = localStorage.getItem("highscore") || 0;
+// Imposta il punteggio più alto
 function setHighScore(newScore) {
   highScoreElement.innerText = highscore = newScore;
   localStorage.setItem("highscore", newScore);
 }
 
+// Controlla se il punteggio attuale è un nuovo record
 function checkForHighScore() {
   if (score > highscore) {
     setHighScore(score);
   }
 }
 
+// Ottieni una dimensione casuale per l'ostacolo
 function getRandomObstacleSize() {
   const index = Math.floor(Math.random() * OBSTACLE_SIZES.length);
   return OBSTACLE_SIZES[index];
 }
 
 let changeObstacleInterval;
+
+// Randomizza gli ostacoli con un ritardo iniziale
 function randomiseObstacle() {
-  changeObstacleInterval = setInterval(() => {
-    const obstacleSize = getRandomObstacleSize();
-    obstacleElement.className = `obstacle obstacle-${obstacleSize}`;
-  }, 1500);
+  obstacleElement.classList.add("hidden-obstacle"); // Nascondi gli ostacoli inizialmente
+  setTimeout(() => {
+    obstacleElement.classList.remove("hidden-obstacle"); // Mostra gli ostacoli dopo il ritardo
+    changeObstacleInterval = setInterval(() => {
+      const obstacleSize = getRandomObstacleSize();
+      obstacleElement.className = `obstacle obstacle-${obstacleSize}`;
+    }, 1500);
+  }, 3000); // Ritardo di 3 secondi prima dell'inizio della comparsa degli ostacoli
 }
 
+// Ferma il gioco
 function stopGame() {
   clearInterval(collisionInterval);
   clearInterval(scoreInterval);
@@ -130,10 +147,12 @@ function stopGame() {
   jumping = true;
 }
 
+// Riavvia il gioco
 function restart() {
   location.reload();
 }
 
+// Funzione principale per iniziare il gioco
 function main() {
   addJumpListener();
   monitorCollision();
